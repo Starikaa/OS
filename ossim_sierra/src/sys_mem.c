@@ -22,14 +22,6 @@ int __sys_memmap(struct pcb_t *caller, struct sc_regs* regs)
    switch (memop) {
    case SYSMEM_MAP_OP:
             /* Reserved process case*/
-       struct vm_rg_struct* new_region = malloc(sizeof(struct vm_rg_struct));
-       if (get_free_vmrg_area(caller, regs->a2, regs->a3, new_region) == 0) {
-           enlist_vm_freerg_list(caller->mm, new_region);
-           printf("Memory region mapped: start=%d, end=%d\n", new_region->rg_start, new_region->rg_end);
-       }
-       else {
-           printf("Failed to map memory region for process.\n");
-       }
             break;
    case SYSMEM_INC_OP:
             inc_vma_limit(caller, regs->a2, regs->a3);

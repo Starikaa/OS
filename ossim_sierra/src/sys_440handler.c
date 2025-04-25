@@ -1,9 +1,9 @@
-#include ”common.h”
- #include ”syscall .h”
- #include ”stdio .h”
-int sys_440handler(struct pcb t ∗caller , struct sc regs∗ reg)
+#include "common.h"
+ #include "syscall.h"
+ #include "stdio.h"
+int __sys_440handler(struct pcb_t * caller , struct sc_regs * reg)
  {
  /* TODO: implement syscall job */
- printf(”The first system call parameter%d\n”, regs−>a1);
+ printf("The first system call parameter%d\n", reg->a1);
  return 0;
  }

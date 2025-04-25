@@ -11,7 +11,7 @@
 #include <stdlib.h>
 #include<ctype.h>
 #include <signal.h>
-#include <unistd.h>  
+#include <unistd.h>
 
 static int time_slot;
 static int num_cpus;
@@ -77,7 +77,7 @@ static void * cpu_routine(void * args) {
 			put_proc(proc);
 			proc = get_proc();
 		}
-		
+
 		/* Recheck process status after loading new process */
 		if (proc == NULL && done) {
 			/* No process to run, exit */
@@ -93,7 +93,7 @@ static void * cpu_routine(void * args) {
 				id, proc->pid);
 			time_left = time_slot;
 		}
-		
+
 		/* Run current process */
 		run(proc);
 		time_left--;
@@ -259,7 +259,7 @@ void segfault_handler(int signal) {
 // 	struct cpu_args * args =
 // 		(struct cpu_args*)malloc(sizeof(struct cpu_args) * num_cpus);
 // 	pthread_t ld;
-	
+
 // 	/* Init timer */
 // 	int i;
 // 	for (i = 0; i < num_cpus; i++) {
@@ -279,7 +279,7 @@ void segfault_handler(int signal) {
 // 	/* Create MEM RAM */
 // 	init_memphy(&mram, memramsz, rdmflag);
 
-//         /* Create all MEM SWAP */ 
+//         /* Create all MEM SWAP */
 // 	int sit;
 // 	for(sit = 0; sit < PAGING_MAX_MMSWP; sit++)
 // 	       init_memphy(&mswp[sit], memswpsz[sit], rdmflag);
